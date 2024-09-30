@@ -10,9 +10,6 @@ def d6():
 def d4():
     return random.randint(1,4)
 
-def pointBuyStat():
-    return random.randint(6,16)
-
 def getOneStat():
     rolls = []
     rolls.append(d6())
@@ -27,8 +24,15 @@ def getStats():
     stats = []
     for _ in range(6):
         stats.append(getOneStat())
+    stats.sort()
+    return stats
+
+def getStatsBetween70and74():
+    stats = []
+    for _ in range(6):
+        stats.append(getOneStat())
     if(sum(stats) > 74 or sum(stats) < 70):
-        return getStats()
+        return getStatsBetween70and74()
     stats.sort()
     return stats
 
@@ -135,7 +139,7 @@ def getOneStatOSR():
     return sum(rolls)
 
 # Roll 3d6.
-def getOSRStats():
+def getStatsOSR():
     stats = []
     for _ in range(6):
         stats.append(getOneStatOSR())
