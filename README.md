@@ -1,5 +1,9 @@
 # Stat Generator for Dungeons and Dragons
-This project provides a set of Python functions to generate and analyze character stats for Dungeons and Dragons (D&D). The stats are generated using various methods, including rolling dice and point buy systems.
+This project provides a set of Python functions to generate and analyze character stats for Dungeons and Dragons (D&D). The stats are generated using a combination of various methods, including rolling dice and point buy systems.
+
+## Why This Script?
+
+I created this script to have a way of generating stats for Dungeons and Dragons characters that combines the fun of randomness from dice rolls with the possibility of achieving very high (16, 17, 18) and very low (down to 3) stats. This approach maintains the rarity of extreme stats while also incorporating the balance that systems like point buy provide.
 
 ## Features
 
@@ -18,11 +22,15 @@ This project provides a set of Python functions to generate and analyze characte
 
 ### Stat Generation Functions
 
-- `pointBuyStat()`: Generates a stat using the point buy system.
 - `getOneStat()`: Generates a single stat by rolling four 6-sided dice and summing the highest three rolls.
-- `getStats()`: Generates a set of six stats, ensuring the sum of the stats is between 70 and 74.
+- `getStats()`: Generates a set of six stats using the above method.
+- `getStatsBetween70and74()`: Generates a set of six stats, ensuring the sum of the stats is between 70 and 74.
 - `getOneStatOSR()`: Generates a single stat by rolling three 6-sided dice.
-- `getOSRStats()`: Generates a set of six stats using the OSR method (rolling three 6-sided dice for each stat).
+- `getStatsOSR()`: Generates a set of six stats using the OSR method (rolling three 6-sided dice for each stat).
+
+And my favourites:
+- `getRandomPointBuyStats()`: Generates a set of six sets by rolling four 6-sided dice and summing the highest three rolls for each stat until the six stats generated follow the rules for an extended point buy system where all stats possible to roll (3 to 18) are allowed.
+- `getRandomPointBuyStatsOSR()`: Generates a set of six stats using the OSR method but ensuring the stats align with a reduced point buy system.
 
 ### Stat Analysis Functions
 
@@ -33,14 +41,8 @@ This project provides a set of Python functions to generate and analyze characte
 - `countNumberOfOccurencesPointBuy(n)`: Counts the occurrences of each stat value in `n` sets of stats generated using the point buy system.
 
 ## Usage
-
-To use the functions, simply import the `stats.py` module and call the desired functions. For example:
-
-```python
-from stats import getRandomPointBuyStats
-
-print(getRandomPointBuyStats())
-```
+### Using the Script in the Terminal
+Running the script directly uses the `getRandomPointBuyStats()` and `getRandomPointBuyStatsOSR()` functions.
 
 To generate OSR stats, use the `--osr` flag:
 
@@ -53,6 +55,24 @@ To generate multiple sets of stats, use the `--amount` flag:
 ```sh
 python stats.py --amount 5
 ```
+
+You can combine flags to generate multiple sets of OSR stats:
+
+```sh
+python stats.py --osr --amount 5
+```
+
+### Using the functions in your own Python projects
+
+To use the functions, simply import the `stats.py` module and call the desired functions. For example:
+
+```python
+from stats import getRandomPointBuyStats
+
+print(getRandomPointBuyStats())
+```
+
+
 
 ## Contributing
 
